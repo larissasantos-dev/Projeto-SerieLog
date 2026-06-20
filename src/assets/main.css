@@ -1,0 +1,264 @@
+/* ==========================================================================
+   main.css — Estilos Globais da Aplicação SerieLog
+   
+   Este arquivo define:
+   - Variáveis CSS (Design Tokens) para cores, fontes e espaçamentos
+   - Reset e estilos base do HTML
+   - Estilos globais compartilhados (botões, inputs, etc.)
+   
+   Paleta: Azul e Roxo — gradientes vibrantes com fundo escuro,
+   criando uma estética premium, moderna e imersiva.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   VARIÁVEIS CSS (Design Tokens)
+   Centralizamos cores, fontes e valores reutilizáveis aqui.
+   Qualquer mudança de tema pode ser feita alterando apenas estas variáveis.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Cores de fundo — tons escuros com toque azulado */
+  --bg-primary: #080b14;            /* Fundo principal (azul muito escuro) */
+  --bg-secondary: #0e1525;          /* Fundo dos cards */
+  --bg-tertiary: #151e33;           /* Fundo de inputs e elementos elevados */
+  --bg-glass: rgba(14, 21, 37, 0.75); /* Fundo com efeito glassmorphism */
+
+  /* Cores de texto */
+  --text-primary: #e4e8f7;          /* Texto principal (branco azulado) */
+  --text-secondary: #8892b0;        /* Texto secundário */
+  --text-muted: #4a5578;            /* Texto sutil / desabilitado */
+
+  /* Cores de acento — gradiente azul → roxo */
+  --accent-blue: #3b82f6;           /* Azul vibrante */
+  --accent-purple: #8b5cf6;         /* Roxo vibrante */
+  --accent-indigo: #6366f1;         /* Indigo (meio-termo) */
+  --accent-light: #a78bfa;          /* Roxo claro */
+  --accent-gradient: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6); /* Gradiente azul→roxo */
+  --accent-gradient-hover: linear-gradient(135deg, #2563eb, #4f46e5, #7c3aed); /* Gradiente mais intenso */
+
+  /* Cores de estado */
+  --color-success: #34d399;         /* Verde-turquesa para "assistida" */
+  --color-warning: #fbbf24;         /* Amarelo para notas */
+  --color-danger: #f87171;          /* Vermelho para remoção */
+  --color-info: #60a5fa;            /* Azul claro para informação */
+
+  /* Bordas e efeitos */
+  --border-color: rgba(99, 102, 241, 0.12);   /* Borda sutil azul/roxo */
+  --border-hover: rgba(99, 102, 241, 0.35);   /* Borda em hover */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow-blue: 0 0 25px rgba(59, 130, 246, 0.15);    /* Brilho azul */
+  --shadow-glow-purple: 0 0 25px rgba(139, 92, 246, 0.15);  /* Brilho roxo */
+  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.2);          /* Brilho indigo */
+
+  /* Tipografia */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Espaçamento */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Transições */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s ease;
+}
+
+/* --------------------------------------------------------------------------
+   RESET E BASE
+   Normalizamos os estilos padrão do navegador para garantir consistência.
+   -------------------------------------------------------------------------- */
+
+/* box-sizing border-box: faz o padding e border serem incluídos no width/height */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos base do body */
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Fundo com gradientes radiais em azul e roxo para dar profundidade */
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(139, 92, 246, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(99, 102, 241, 0.06) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* --------------------------------------------------------------------------
+   LINKS
+   -------------------------------------------------------------------------- */
+a {
+  color: var(--accent-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-blue);
+}
+
+/* --------------------------------------------------------------------------
+   BOTÕES GLOBAIS
+   Estilos base e variações de botão reutilizáveis em toda a aplicação.
+   -------------------------------------------------------------------------- */
+
+/* Botão base — estilo compartilhado por todos os botões */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  letter-spacing: 0.02em;
+}
+
+/* Botão primário — usa o gradiente azul→roxo */
+.btn-primary {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+}
+
+.btn-primary:hover {
+  background: var(--accent-gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Botão de perigo — para ações destrutivas como remoção */
+.btn-danger {
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--color-danger);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.btn-danger:hover {
+  background: rgba(248, 113, 113, 0.18);
+  border-color: rgba(248, 113, 113, 0.45);
+  transform: translateY(-1px);
+}
+
+/* Botão outline — borda transparente */
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn-outline:hover {
+  border-color: var(--border-hover);
+  background: rgba(99, 102, 241, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   INPUTS GLOBAIS
+   Estilos para campos de formulário (select, input, etc.)
+   -------------------------------------------------------------------------- */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  transition: all var(--transition-normal);
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--accent-indigo);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   ANIMAÇÕES GLOBAIS
+   Animações reutilizáveis para criar micro-interações.
+   -------------------------------------------------------------------------- */
+
+/* Animação de entrada: elementos aparecem suavemente de baixo para cima */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação de pulso suave para elementos de destaque */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(99, 102, 241, 0.25);
+  }
+}
+
+/* Animação shimmer para gradientes */
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Classe utilitária para aplicar a animação de fade-in */
+.fade-in-up {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* --------------------------------------------------------------------------
+   SCROLLBAR PERSONALIZADA
+   Estilizamos a barra de rolagem para manter a estética dark azul.
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
