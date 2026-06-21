@@ -1,37 +1,10 @@
 {
   "series": [
-    {
-      "titulo": "Breaking Bad",
-      "genero": "Drama",
-      "nota": 10,
-      "ano": 2000,
-      "assistida": true,
-      "id": "SRwgmWw68rk"
-    },
-    {
-      "titulo": "Pretty Little Liars",
-      "genero": "Drama",
-      "nota": 10,
-      "ano": 2007,
-      "assistida": false,
-      "id": "79fsoU60BlY"
-    },
-    {
-      "titulo": "Violetta",
-      "genero": "Adolescente",
-      "nota": 10,
-      "ano": 2010,
-      "assistida": false,
-      "id": "gXC0RgXHAUQ"
-    },
-    {
-      "titulo": "Gossip Girl",
-      "genero": "Suspense",
-      "nota": 7,
-      "ano": 2007,
-      "assistida": true,
-      "id": "_l1TV0RVcIY"
-    }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+    { "id": 1, "titulo": "Breaking Bad", "genero": "Crime / Drama", "nota": 9.5, "ano": 2008, "assistida": true },
+    { "id": 2, "titulo": "Succession", "genero": "Drama", "nota": 8.9, "ano": 2018, "assistida": true },
+    { "id": 3, "titulo": "Severance", "genero": "Ficção Científica", "nota": 8.7, "ano": 2022, "assistida": false },
+    { "id": 4, "titulo": "The Wire", "genero": "Crime / Drama", "nota": 9.3, "ano": 2002, "assistida": true },
+    { "id": 5, "titulo": "Fleabag", "genero": "Comédia", "nota": 8.7, "ano": 2016, "assistida": false },
+    { "id": 6, "titulo": "Chernobyl", "genero": "Drama / História", "nota": 9.4, "ano": 2019, "assistida": true }
+  ]
 }
