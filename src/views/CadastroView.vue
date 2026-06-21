@@ -48,16 +48,13 @@
 
 <script setup>
 import { useRouter } from 'vue-router'
+import { adicionarSerie } from '../store/series.js'
 import SerieForm from '../components/SerieForm.vue'
 
 const router = useRouter()
 
 async function cadastrarSerie(dados){
-  await fetch('http://localhost:3000/series', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify(dados)
-  })
+  await adicionarSerie(dados)
   router.push('/')
 }
 </script>

@@ -161,23 +161,17 @@
 // computed: cria valores derivados que recalculam automaticamente
 // onMounted: lifecycle hook executado quando o componente é montado
 import { ref, computed, onMounted } from 'vue'
+import { series, carregarSeries as carregarSeriesStore, removerSerie as removerSerieStore } from '../store/series.js'
 
 // Importação dos componentes filhos
 import SerieCard from '../components/SerieCard.vue'
 import FiltroSeries from '../components/FiltroSeries.vue'
-
-// URL base da API (JSON Server rodando localmente)
-const API_URL = 'http://localhost:3000/series'
 
 // ==========================================================================
 // ESTADO REATIVO
 // Variáveis criadas com ref() são REATIVAS: quando seu .value muda,
 // qualquer parte do template que as usa é automaticamente re-renderizada.
 // ==========================================================================
-
-// Array de séries carregadas da API
-// Começa vazio e é preenchido no onMounted
-const series = ref([])
 
 // Controle de estados da UI
 const carregando = ref(false)  // true enquanto busca dados da API
@@ -279,69 +273,23 @@ const totalPendentes = computed(() => {
  * async/await: permite escrever código assíncrono de forma legível.
  * O await "espera" a resposta da API antes de continuar.
  */
-async function carregarSeries() {
-  carregando.value = true  // Ativa indicador de carregamento
-  erro.value = null        // Limpa erros anteriores
-
-  try {
-    // fetch() faz uma requisição HTTP GET para a URL da API
-    const resposta = await fetch(API_URL)
-
-    // Verifica se a resposta foi bem-sucedida (status 200-299)
-    if (!resposta.ok) {
-      throw new Error('Erro ao carregar as séries da API')
-    }
-
-    // .json() converte o corpo da resposta de JSON para objeto JavaScript
-    const dados = await resposta.json()
-
-    // Atualiza o array reativo com os dados da API
-    // Isso dispara a reatividade: o template re-renderiza automaticamente
-    series.value = dados
-
-  } catch (e) {
-    // Se a requisição falhar (ex: API offline), armazena a mensagem de erro
-    erro.value = 'Não foi possível carregar as séries. Verifique se o JSON Server está rodando.'
+async function carregarSeries(){
+  carregando.value = true
+  erro.value = null
+  try{
+    await carregarSeriesStore()
+  }catch(e){
+    erro.value = 'Não foi possível carregar as séries. Verifique se o JSON Server está rodando'
     console.error('Erro ao carregar séries:', e)
-  } finally {
-    // Desativa o indicador de carregamento, independente de sucesso ou erro
+  }finally{
     carregando.value = false
   }
 }
 
-/**
- * removerSerie — remove uma série do catálogo
- *
- * Esta função é chamada quando o SerieCard emite o evento 'remover'.
- * Ela:
- * 1. Faz uma requisição DELETE à API para remover a série no backend
- * 2. Remove a série do array reativo local
- *
- * A remoção do array local faz a série sumir da tela IMEDIATAMENTE
- * sem recarregar a página — isso é reatividade do Vue.
- *
- * @param {number} id — ID da série a ser removida (recebido via emit)
- */
-async function removerSerie(id) {
-  try {
-    // DELETE /series/:id — remove a série no JSON Server
-    const resposta = await fetch(`${API_URL}/${id}`, {
-      method: 'DELETE'  // Método HTTP DELETE
-    })
-
-    // Verifica se a remoção foi bem-sucedida
-    if (!resposta.ok) {
-      throw new Error('Erro ao remover a série')
-    }
-
-    // Remove a série do array reativo local
-    // .filter() cria um NOVO array sem a série removida
-    // Ao atualizar series.value, o Vue detecta a mudança e
-    // re-renderiza o grid automaticamente (reatividade)
-    series.value = series.value.filter(serie => serie.id !== id)
-
-  } catch (e) {
-    // Se falhar, mostra alerta para o usuário
+async function removerSerie(id){
+  try{
+    await removerSerieStore(id)
+  }catch (e){
     alert('Erro ao remover a série. Tente novamente.')
     console.error('Erro ao remover série:', e)
   }
