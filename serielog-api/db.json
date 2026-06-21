@@ -1,10 +1,52 @@
 {
   "series": [
-    { "id": 1, "titulo": "Breaking Bad", "genero": "Crime / Drama", "nota": 9.5, "ano": 2008, "assistida": true },
-    { "id": 2, "titulo": "Succession", "genero": "Drama", "nota": 8.9, "ano": 2018, "assistida": true },
-    { "id": 3, "titulo": "Severance", "genero": "Ficção Científica", "nota": 8.7, "ano": 2022, "assistida": false },
-    { "id": 4, "titulo": "The Wire", "genero": "Crime / Drama", "nota": 9.3, "ano": 2002, "assistida": true },
-    { "id": 5, "titulo": "Fleabag", "genero": "Comédia", "nota": 8.7, "ano": 2016, "assistida": false },
-    { "id": 6, "titulo": "Chernobyl", "genero": "Drama / História", "nota": 9.4, "ano": 2019, "assistida": true }
+    {
+      "id": 1,
+      "titulo": "Breaking Bad",
+      "genero": "Crime / Drama",
+      "nota": 9.5,
+      "ano": 2008,
+      "assistida": true
+    },
+    {
+      "id": 2,
+      "titulo": "Teen Wolf",
+      "genero": "Fantasia / Drama",
+      "nota": 8.2,
+      "ano": 2011,
+      "assistida": true
+    },
+    {
+      "id": 3,
+      "titulo": "Pretty Little Liars",
+      "genero": "Mistério / Drama",
+      "nota": 7.8,
+      "ano": 2010,
+      "assistida": false
+    },
+    {
+      "id": 4,
+      "titulo": "Chernobyl",
+      "genero": "Drama / História",
+      "nota": 9.4,
+      "ano": 2019,
+      "assistida": true
+    },
+    {
+      "id": 5,
+      "titulo": "Peaky Blinders",
+      "genero": "Crime / Drama",
+      "nota": 8.8,
+      "ano": 2013,
+      "assistida": false
+    },
+    {
+      "id": 6,
+      "titulo": "Supernatural",
+      "genero": "Fantasia / Terror",
+      "nota": 8.4,
+      "ano": 2005,
+      "assistida": true
+    }
   ]
 }
