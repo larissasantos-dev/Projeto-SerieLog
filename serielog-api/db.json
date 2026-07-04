@@ -1,23 +1,7 @@
 {
   "series": [
     {
-      "id": 1,
-      "titulo": "Breaking Bad",
-      "genero": "Crime / Drama",
-      "nota": 9.5,
-      "ano": 2008,
-      "assistida": true
-    },
-    {
-      "id": 2,
-      "titulo": "Teen Wolf",
-      "genero": "Fantasia / Drama",
-      "nota": 8.2,
-      "ano": 2011,
-      "assistida": true
-    },
-    {
-      "id": 3,
+      "id": "3",
       "titulo": "Pretty Little Liars",
       "genero": "Mistério / Drama",
       "nota": 7.8,
@@ -25,7 +9,7 @@
       "assistida": false
     },
     {
-      "id": 4,
+      "id": "4",
       "titulo": "Chernobyl",
       "genero": "Drama / História",
       "nota": 9.4,
@@ -33,7 +17,7 @@
       "assistida": true
     },
     {
-      "id": 5,
+      "id": "5",
       "titulo": "Peaky Blinders",
       "genero": "Crime / Drama",
       "nota": 8.8,
@@ -41,12 +25,21 @@
       "assistida": false
     },
     {
-      "id": 6,
+      "id": "6",
       "titulo": "Supernatural",
       "genero": "Fantasia / Terror",
       "nota": 8.4,
       "ano": 2005,
       "assistida": true
+    },
+    {
+      "titulo": "Violetta",
+      "genero": "Suspense",
+      "nota": 8,
+      "ano": 2010,
+      "assistida": true,
+      "id": "x6_Of5sxyeU"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
