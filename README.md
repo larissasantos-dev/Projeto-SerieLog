@@ -83,6 +83,6 @@ A aplicação ficará disponível em `http://localhost:5173`.
  
 ## 👥 Equipe
  
-- Dupla 1 — Listagem, Remoção e Filtro
-- Dupla 2 — Cadastro, Navegação (Vue Router) e Componentização
+- Lana — Listagem, Remoção e Filtro
+- Larissa — Cadastro, Navegação (Vue Router) e Componentização
  
